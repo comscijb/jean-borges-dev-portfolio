@@ -41,7 +41,7 @@ export function ProjectPage() {
         <Stack gap="8" animation="section-enter 0.55s ease-in both">
           <Stack gap="4">
             <Text color="brand.fg" fontWeight="800" letterSpacing="0.14em">
-              ESTUDO DE CASO
+              PROJETO
             </Text>
 
             <Heading color="fg" fontSize={{ base: "4xl", md: "6xl" }}>

@@ -15,13 +15,13 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "portfolio",
-    title: "Portfólio Dev Web",
-    slug: "portfolio-dev-web",
+    id: "construiq",
+    title: "ConstruiQ Landing Page",
+    slug: "construiq-landing-page",
     category: "Landing Page",
     description:
-      "Site pessoal orientado à conversão para apresentação de serviços, projetos e contato comercial.",
-    image: "/projects/portfolio.jpg",
+      "Landing page para a ConstruiQ, startup b2b de construção civil, com foco nos clientes e direcionada ao tráfego para a plataforma.",
+    image: "/projects/construiq-cover.jpg",
     tags: ["React", "Chakra UI", "TypeScript"],
     linkType: "internal",
     featured: true,

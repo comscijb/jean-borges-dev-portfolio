@@ -29,6 +29,15 @@ export function HeroSection() {
       borderBottom="1px solid"
       borderColor="border"
       animation="section-enter 0.5s ease-in both"
+      _before={{
+        content: '""',
+        position: "absolute",
+        inset: "0",
+        bgImage: "url('/background-main.png')",
+        bgSize: "cover",
+        backgroundPosition: "center",
+        opacity: "0.30",
+      }}
     >
       <Box
         position="absolute"
