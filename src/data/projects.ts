@@ -85,16 +85,71 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "external-demo",
-    title: "Projeto Externo",
-    slug: "projeto-externo",
-    category: "Site institucional",
+    id: "clima-prime",
+    title: "Clima Prime Refrigeração",
+    slug: "clima-prime",
+    category: "Landing Page de Conversão",
     description:
-      "Projeto publicado fora do portfólio, com navegação direcionada para o site em produção.",
-    image: "/projects/external-demo.jpg",
-    tags: ["Web", "SEO", "Performance"],
-    linkType: "external",
-    externalUrl: "https://example.com",
+      "Landing page premium para empresa fictícia de refrigeração, criada para gerar leads pelo WhatsApp e apresentar serviços de instalação, higienização e manutenção de ar-condicionado.",
+    image: "/projects/clima-prime-cover.jpg",
+    tags: ["React", "TypeScript", "Chakra UI", "Vite", "Netlify"],
+    linkType: "internal",
+    externalUrl: "https://clima-prime.netlify.app/",
     featured: true,
+    caseStudy: {
+      eyebrow: "Landing page para serviço local",
+      headline:
+        "Uma página direta ao ponto para transformar visitantes em pedidos de orçamento pelo WhatsApp.",
+      problem:
+        "Empresas locais de refrigeração muitas vezes dependem apenas de indicação ou redes sociais, sem uma página clara que explique serviços, reduza dúvidas e conduza o visitante para o orçamento.",
+      solution:
+        "Criação de uma landing page com hero de conversão, dores do cliente, serviços, oferta principal, processo de atendimento, seção para empresas, FAQ e CTA final para WhatsApp.",
+      result:
+        "Projeto publicado no Netlify, com layout responsivo, estrutura modular e comunicação comercial voltada para captação de leads.",
+      role:
+        "Desenvolvimento frontend, estruturação da landing page, organização dos componentes, copy orientada à conversão e preparação para deploy.",
+      year: "2026",
+      metrics: [
+        { label: "Tipo", value: "Landing page" },
+        { label: "Objetivo", value: "Leads via WhatsApp" },
+        { label: "Deploy", value: "Netlify" }
+      ],
+      features: [
+        "Hero com proposta de valor clara.",
+        "CTA principal direcionado para WhatsApp.",
+        "Seção de dores para aumentar identificação.",
+        "Cards de serviços organizados por intenção de contratação.",
+        "Oferta principal com redução de risco.",
+        "Fluxo de atendimento em quatro passos.",
+        "FAQ para remover objeções.",
+        "Layout responsivo para desktop e mobile."
+      ],
+      images: [
+        {
+          src: "/projects/clima-prime-hero.jpg",
+          alt: "Hero section da landing page Clima Prime",
+          title: "Hero de conversão",
+          description: "Primeira dobra com headline, CTAs e elementos de confiança."
+        },
+        {
+          src: "/projects/clima-prime-services.jpg",
+          alt: "Seção de serviços da Clima Prime",
+          title: "Serviços",
+          description: "Cards organizados para instalação, higienização e manutenção."
+        },
+        {
+          src: "/projects/clima-prime-offer.jpg",
+          alt: "Oferta principal da Clima Prime",
+          title: "Oferta principal",
+          description: "Bloco comercial com inclusos, bônus e redução de risco."
+        },
+        {
+          src: "/projects/clima-prime-mobile.jpg",
+          alt: "Versão mobile da landing page Clima Prime",
+          title: "Responsividade",
+          description: "Layout adaptado para navegação em dispositivos móveis."
+        }
+      ]
+    }
   },
 ]
