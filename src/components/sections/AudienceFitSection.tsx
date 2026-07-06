@@ -8,7 +8,7 @@ const fitItems = [
   "Escritórios e profissionais liberais",
   "Restaurantes, delivery e negócios locais",
   "Empresas de manutenção, construção e serviços técnicos",
-  "Pequenas empresas que dependem de orçamento pelo WhatsApp",
+  "Pequenas empresas que dependem de orçamento pelo WhatsApp, e-mail ou plataformas de marketplace",
   "Negócios com site antigo, lento ou pouco profissional",
 ]
 
