@@ -25,6 +25,9 @@ import { Link as RouterLink, useParams } from "react-router"
 import { projects } from "@/data/projects"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { Breadcrumbs } from "@/components/common/Breadcrumbs"
+import { SEO } from "@/components/seo/SEO"
+import { absoluteUrl, siteConfig } from "@/config/site"
 import type { Project } from "@/types/project"
 
 type TagListProps = {
@@ -85,6 +88,14 @@ function FallbackProject({ project }: FallbackProjectProps) {
   return (
     <Stack gap="8" animation="section-enter 0.55s ease-in both">
       <Stack gap="4">
+        <Breadcrumbs
+          items={[
+            { label: "Início", href: "/" },
+            { label: "Projetos", href: "/#projetos" },
+            { label: project.title },
+          ]}
+        />
+
         <Button asChild w="fit-content" variant="outline" borderColor="border.muted">
           <RouterLink to="/#projetos">
             <Icon as={FiArrowLeft} />
@@ -96,7 +107,7 @@ function FallbackProject({ project }: FallbackProjectProps) {
           PROJETO
         </Text>
 
-        <Heading color="fg" fontSize={{ base: "4xl", md: "6xl" }}>
+        <Heading as="h1" color="fg" fontSize={{ base: "4xl", md: "6xl" }}>
           {project.title}
         </Heading>
 
@@ -151,9 +162,15 @@ export function ProjectPage() {
     return (
       <Box minH="100vh" bg="bg.canvas">
         <Header />
+        <SEO
+          title="Projeto não encontrado | Jean Borges"
+          description="Projeto não encontrado no portfólio de Jean Borges."
+          path={slug ? `/projetos/${slug}` : "/projetos"}
+          noIndex
+        />
         <Container maxW="900px" py="24">
           <Stack gap="5">
-            <Heading color="fg">Projeto não encontrado</Heading>
+            <Heading as="h1" color="fg">Projeto não encontrado</Heading>
             <Button asChild w="fit-content">
               <RouterLink to="/">Voltar para o início</RouterLink>
             </Button>
@@ -168,6 +185,38 @@ export function ProjectPage() {
   const images = caseStudy?.images ?? []
   const activeImage = activeImageIndex === null ? undefined : images[activeImageIndex]
   const canBrowseImages = images.length > 1
+  const projectPath = `/projetos/${project.slug}`
+  const projectDescription = caseStudy?.headline ?? project.description
+  const projectUrl = absoluteUrl(projectPath)
+  const breadcrumbs = [
+    { label: "Início", href: "/" },
+    { label: "Projetos", href: "/#projetos" },
+    { label: project.title },
+  ]
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      item: absoluteUrl(item.href ?? projectPath),
+    })),
+  }
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    url: projectUrl,
+    image: absoluteUrl(project.image),
+    description: projectDescription,
+    author: {
+      "@type": "Person",
+      name: siteConfig.author,
+      url: absoluteUrl("/"),
+    },
+    inLanguage: siteConfig.language,
+  }
 
   function openLightbox(index: number) {
     setActiveImageIndex(index)
@@ -193,6 +242,14 @@ export function ProjectPage() {
 
   return (
     <Box minH="100vh" bg="bg.canvas">
+      <SEO
+        title={`${project.title} | Projeto de Jean Borges`}
+        description={projectDescription}
+        path={projectPath}
+        image={project.image}
+        type="article"
+        jsonLd={[breadcrumbJsonLd, projectJsonLd]}
+      />
       <Header />
 
       <Container maxW="1180px" py={{ base: "16", md: "24" }}>
@@ -201,6 +258,8 @@ export function ProjectPage() {
         ) : (
           <Stack gap={{ base: "10", md: "14" }} animation="section-enter 0.55s ease-in both">
             <Stack gap="5">
+              <Breadcrumbs items={breadcrumbs} />
+
               <Button asChild w="fit-content" variant="outline" borderColor="border.muted">
                 <RouterLink to="/#projetos">
                   <Icon as={FiArrowLeft} />
@@ -214,7 +273,7 @@ export function ProjectPage() {
 
               <Grid templateColumns={{ base: "1fr", lg: "1.05fr 0.95fr" }} gap="8" alignItems="end">
                 <Stack gap="4">
-                  <Heading color="fg" fontSize={{ base: "4xl", md: "6xl" }} lineHeight="1.05">
+                  <Heading as="h1" color="fg" fontSize={{ base: "4xl", md: "6xl" }} lineHeight="1.05">
                     {project.title}
                   </Heading>
 

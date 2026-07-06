@@ -1,5 +1,16 @@
 # React + TypeScript + Vite
 
+## Publicação e indexação
+
+- Faça o deploy da versão de produção do site.
+- Configure o domínio real do projeto.
+- Atualize `src/config/site.ts` com o domínio, e-mail e perfis sociais reais.
+- Atualize `public/robots.txt` com o mesmo domínio configurado em `siteConfig.url`.
+- Crie ou substitua `public/og-image.png` antes da divulgação em redes sociais.
+- Rode `npm run generate:sitemap` ou `npm run build` para gerar `public/sitemap.xml`.
+- Envie o `sitemap.xml` no Google Search Console.
+- Após publicar, solicite a inspeção da URL principal no Google Search Console.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

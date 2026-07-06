@@ -11,10 +11,41 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { FinalCTASection } from "@/components/sections/FinalCTASection"
 import { AboutMeSection } from "@/components/sections/AboutMeSection"
+import { SEO } from "@/components/seo/SEO"
+import { absoluteUrl, siteConfig } from "@/config/site"
 
 export function HomePage() {
+  const homeJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: absoluteUrl("/"),
+      description: siteConfig.description,
+      inLanguage: siteConfig.language,
+      publisher: {
+        "@type": "Person",
+        name: siteConfig.author,
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: siteConfig.author,
+      url: absoluteUrl("/"),
+      sameAs: siteConfig.sameAs,
+      description: siteConfig.description,
+    },
+  ]
+
   return (
     <Box minH="100vh" bg="bg.canvas">
+      <SEO
+        title="Jean Borges | Desenvolvedor Web para Landing Pages e Sistemas"
+        description="Desenvolvimento de landing pages, sites institucionais e sistemas web com foco em conversão, performance e evolução técnica para empresas."
+        path="/"
+        jsonLd={homeJsonLd}
+      />
       <Header />
       <HeroSection />
       <BenefitsStrip />

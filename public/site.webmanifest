@@ -1,0 +1,11 @@
+{
+  "name": "Jean Borges | Desenvolvedor Full Stack",
+  "short_name": "Jean Borges",
+  "description": "Portfolio de desenvolvimento web, landing pages e sistemas sob medida.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F14",
+  "theme_color": "#00C2D6",
+  "lang": "pt-BR",
+  "icons": []
+}
