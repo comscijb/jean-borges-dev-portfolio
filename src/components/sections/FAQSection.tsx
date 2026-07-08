@@ -1,6 +1,7 @@
-import { Box, Container, Grid, Icon, Stack, Text } from "@chakra-ui/react"
-import { FiHelpCircle } from "react-icons/fi"
+import { Box, Collapsible, Container, Grid, HStack, Icon, Stack, Text } from "@chakra-ui/react"
+import { FiChevronDown, FiHelpCircle } from "react-icons/fi"
 import { SectionHeader } from "@/components/common/SectionHeader"
+import { useState } from "react"
 
 const faqItems = [
   {
@@ -33,12 +34,10 @@ const faqItems = [
 ]
 
 export function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
   return (
-    <Box
-      bg="bg.sectionAlt"
-      py={{ base: "14", md: "20" }}
-      animation="section-enter 0.82s ease-in both"
-    >
+    <Box bg="bg.sectionAlt" py={{ base: "14", md: "20" }}>
       <Container maxW="1180px">
         <SectionHeader
           eyebrow="FAQ"
@@ -47,27 +46,48 @@ export function FAQSection() {
         />
 
         <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap="5">
-          {faqItems.map((item) => (
-            <Stack
-              key={item.question}
-              gap="3"
-              minH="190px"
-              p="6"
-              rounded="2xl"
-              border="1px solid"
-              borderColor="border.muted"
-              bg="bg.card"
-              boxShadow="card"
-            >
-              <Icon as={FiHelpCircle} color="brand.fg" boxSize="7" />
-              <Text color="fg" fontSize="lg" fontWeight="800">
-                {item.question}
-              </Text>
-              <Text color="fg.muted" lineHeight="1.7">
-                {item.answer}
-              </Text>
-            </Stack>
-          ))}
+          {faqItems.map((item, index) => {
+            const isOpen = openIndex === index
+
+            return (
+              <Stack
+                as="button"
+                key={item.question}
+                gap="3"
+                p="6"
+                rounded="2xl"
+                border="1px solid"
+                borderColor="border.muted"
+                bg="bg.card"
+                boxShadow="card"
+                textAlign="left"
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+              >
+                <HStack justify="space-between" align="flex-start">
+                  <Icon as={FiHelpCircle} color="brand.fg" boxSize="7" />
+                  <Icon
+                    as={FiChevronDown}
+                    color="brand.fg"
+                    boxSize="5"
+                    transform={isOpen ? "rotate(180deg)" : "rotate(0deg)"}
+                    transition="transform 0.2s ease"
+                  />
+                </HStack>
+
+                <Text color="fg" fontSize="lg" fontWeight="800">
+                  {item.question}
+                </Text>
+
+                <Collapsible.Root open={isOpen}>
+                  <Collapsible.Content>
+                    <Text color="fg.muted" lineHeight="1.7">
+                      {item.answer}
+                    </Text>
+                  </Collapsible.Content>
+                </Collapsible.Root>
+              </Stack>
+            )
+          })}
         </Grid>
       </Container>
     </Box>

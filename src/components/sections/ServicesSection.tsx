@@ -7,7 +7,7 @@ export function ServicesSection() {
   return (
     <Box
       id="servicos"
-      bg="bg.sectionAlt"
+      bg="bg.section"
       py={{ base: "14", md: "20" }}
       animation="section-enter 0.65s ease-in both"
     >

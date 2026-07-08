@@ -22,7 +22,7 @@ const benefits = [
 export function BenefitsStrip() {
   return (
     <Box
-      bg="bg.section"
+      bg="bg.sectionAlt"
       py={{ base: "8", md: "10" }}
       animation="section-enter 0.55s ease-in both"
     >

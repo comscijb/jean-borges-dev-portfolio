@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/react"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { HeroSection } from "@/components/sections/HeroSection"
+import { ClientPainSection } from "@/components/sections/ClientPainSection"
 import { BenefitsStrip } from "@/components/sections/BenefitsStrip"
 import { ServicesSection } from "@/components/sections/ServicesSection"
 import { GuaranteeSection } from "@/components/sections/GuaranteeSection"
@@ -42,14 +43,15 @@ export function HomePage() {
     <Box minH="100vh" bg="bg.canvas">
       <SEO
         title="Jean Borges | Desenvolvedor Web para Landing Pages e Sistemas"
-        description="Desenvolvimento de landing pages, sites institucionais e sistemas web com foco em conversão, performance e evolução técnica para empresas."
+        description="Desenvolvimento de landing pages, sites profissionais e sistemas web com foco em clareza, conversão e geração de oportunidades para empresas."
         path="/"
         jsonLd={homeJsonLd}
       />
       <Header />
       <HeroSection />
-      <BenefitsStrip />
+      <ClientPainSection />
       <ServicesSection />
+      <BenefitsStrip />
       <GuaranteeSection />
       <AudienceFitSection />
       <AudienceNotFitSection />

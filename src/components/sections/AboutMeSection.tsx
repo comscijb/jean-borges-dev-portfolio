@@ -59,7 +59,7 @@ export function AboutMeSection() {
 
             <Text color="fg.muted" fontSize={{ base: "md", md: "lg" }} maxW="860px">
               Trabalho com tecnologias modernas como React, TypeScript e Chakra UI, mas a escolha técnica fica nos bastidores.
-               Para o cliente, o que importa é ter um site funcional, profissional e fácil de usar.
+               Para o cliente, o que realmente importa é ter um site funcional, profissional e fácil de usar.
             </Text>
           </Stack>
         </Flex>
