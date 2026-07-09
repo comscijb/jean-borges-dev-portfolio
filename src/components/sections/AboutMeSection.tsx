@@ -4,6 +4,7 @@ import { FiInfo } from "react-icons/fi"
 export function AboutMeSection() {
   return (
     <Box
+      id="sobre"
       bg="bg.sectionDeep"
       py={{ base: "14", md: "20" }}
       animation="section-enter 0.68s ease-in both"

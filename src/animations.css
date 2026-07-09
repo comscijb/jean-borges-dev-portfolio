@@ -1,3 +1,21 @@
+html {
+  scroll-behavior: smooth;
+}
+
+#inicio,
+#servicos,
+#projetos,
+#sobre,
+#contato {
+  scroll-margin-top: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @keyframes section-enter {
   0% {
     opacity: 0;
