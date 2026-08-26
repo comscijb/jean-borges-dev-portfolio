@@ -5,7 +5,7 @@ import path from "node:path"
 const siteUrl = "https://jeanborgesdev.com"
 
 // Internal project routes currently defined in src/data/projects.ts.
-const internalProjectSlugs = ["construiq-landing-page", "clima-prime"]
+const internalProjectSlugs = ["construiq", "clima-prime"]
 
 const canonicalBaseUrl = siteUrl.replace(/\/+$/, "")
 const lastmod = new Date().toISOString().slice(0, 10)
