@@ -1,100 +1,278 @@
-# Portfolio Jean Borges
+# Jean Borges Developer Portfolio
 
-Portfolio profissional desenvolvido com React, TypeScript, Vite e Chakra UI v3, focado em apresentar projetos, estudos de caso e servicos de desenvolvimento web.
+Personal developer portfolio built with React and TypeScript to present selected projects, technical case studies, and my work as a Full Stack Developer.
 
-## Tecnologias
+The site is designed as more than a project gallery. It gives each relevant project its own context, explaining the problem, the solution, the implementation, and the technical decisions behind the work.
+
+**Live site:** [jeanborgesdev.com](https://jeanborgesdev.com)
+
+![Jean Borges developer portfolio](public/og-image.png)
+
+## Purpose
+
+A portfolio should make technical work easy to evaluate.
+
+This project was built to give recruiters, engineering teams, founders, and potential clients a clear view of what I build, how I approach product problems, and which technologies I use.
+
+The portfolio combines:
+
+- a responsive personal landing page
+- project discovery and navigation
+- dedicated project case studies
+- technical and business context
+- SEO metadata and structured data
+- responsive image galleries and project screenshots
+- direct links to live work when available
+
+## Tech stack
+
+### Core
 
 - React
 - TypeScript
 - Vite
-- Chakra UI v3
+- Chakra UI
 - React Router
+
+### UI and experience
+
 - React Icons
+- Responsive layouts
+- Reusable design tokens
+- Accessible navigation
+- Project image lightboxes
+- CSS-based animations
+
+### SEO
+
 - React Helmet Async
+- Canonical URLs
+- Open Graph metadata
+- Twitter Card metadata
+- JSON-LD structured data
+- Sitemap generation
 
-## Estrutura esperada
+### Tooling
 
-Para deploy direto do GitHub pela Hostinger, o projeto deve estar na raiz do repositorio:
+- ESLint
+- TypeScript compiler
+- npm
 
-- `package.json`
-- `package-lock.json`
-- `index.html`
-- `vite.config.ts`
-- `tsconfig.json`
-- `src/`
-- `public/`
+## Main features
 
-Se esses arquivos estiverem dentro de uma subpasta em outro repositorio, a Hostinger pode exibir erro de estrutura invalida ou framework nao compativel.
+### Project case studies
 
-## Como rodar localmente
+Projects are modeled as structured data and rendered through dedicated routes.
+
+Each case can include:
+
+- project context
+- problem and solution
+- role and responsibilities
+- technologies
+- relevant metrics
+- key features
+- screenshots
+- external project links
+
+The portfolio also supports specialized case-study experiences for projects that need a deeper technical presentation.
+
+### ConstruiQ case study
+
+ConstruiQ is the main technical case in the portfolio.
+
+It presents a B2B marketplace for the construction industry and covers flows such as authentication, hiring, contracts, payments, reputation, disputes, administration, and infrastructure.
+
+![ConstruiQ case study](public/projects/construiq-cover.jpg)
+
+### Clima Prime case study
+
+Clima Prime demonstrates a different type of work: a conversion-focused landing page for a local service business.
+
+The case emphasizes responsive frontend development, page structure, user journey, commercial clarity, and deployment.
+
+![Clima Prime case study](public/projects/clima-prime-cover.jpg)
+
+## Architecture
+
+```mermaid
+flowchart TD
+    USER["Visitor"] --> ROUTER["React Router"]
+    ROUTER --> HOME["Home"]
+    ROUTER --> LINKS["Links page"]
+    ROUTER --> PROJECT["Project route"]
+
+    PROJECT --> DATA["Project data"]
+    PROJECT --> GENERIC["Generic case-study layout"]
+    PROJECT --> CUSTOM["Specialized case studies"]
+
+    HOME --> UI["Reusable UI components"]
+    LINKS --> UI
+    GENERIC --> UI
+    CUSTOM --> UI
+
+    UI --> THEME["Chakra UI theme and design tokens"]
+
+    HOME --> SEO["SEO component"]
+    PROJECT --> SEO
+    LINKS --> SEO
+
+    SEO --> META["Canonical, Open Graph, Twitter Cards and JSON-LD"]
+```
+
+The application uses a shared router and reusable layout components, while project content is kept in structured data. This allows simpler projects to use the generic project page while more complex projects can have specialized case-study components without changing the overall navigation model.
+
+## Project structure
+
+```text
+.
+├── public/
+│   ├── projects/          # Project images and screenshots
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── og-image.png
+├── scripts/
+│   └── generate-sitemap.mjs
+├── src/
+│   ├── app/               # Application routing
+│   ├── components/
+│   │   ├── common/
+│   │   ├── layout/
+│   │   ├── project/
+│   │   ├── seo/
+│   │   └── ui/
+│   ├── config/            # Site-level configuration
+│   ├── data/              # Project content
+│   ├── pages/
+│   ├── theme/
+│   └── types/
+├── package.json
+└── vite.config.ts
+```
+
+## Technical decisions
+
+### Keep project content structured
+
+Project metadata and case-study content are stored separately from the main page layout.
+
+This keeps project information easier to update and avoids duplicating page structure for every case.
+
+### Allow specialized cases without replacing the generic route
+
+Most projects can use a shared project presentation, while more complex cases can use their own component inside the same routing structure.
+
+This keeps the project system flexible without forcing every case into the same format.
+
+### Centralize SEO behavior
+
+Site metadata is managed through a shared configuration and reusable SEO component.
+
+Individual pages can define their own title, description, canonical path, social image, robots behavior, and structured data without duplicating head-management logic.
+
+### Keep the deployment static
+
+The portfolio is built as a Vite static application. Production deployment only requires the generated `dist` output, while SPA routing is handled by the hosting configuration.
+
+This keeps the deployment model small and appropriate for a portfolio site.
+
+## Routes
+
+| Route | Purpose |
+| --- | --- |
+| `/` | Main portfolio |
+| `/links` | Direct links page |
+| `/projetos/:slug` | Dynamic project case study |
+| `*` | Not found page |
+
+## Running locally
+
+### Requirements
+
+- Node.js
+- npm
+
+Clone the repository:
+
+```bash
+git clone https://github.com/comscijb/jean-borges-dev-portfolio.git
+cd jean-borges-dev-portfolio
+```
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-## Build de producao
+## Validation and build
+
+Run ESLint:
+
+```bash
+npm run lint
+```
+
+Create the production build:
 
 ```bash
 npm run build
 ```
 
-O build gera a pasta `dist`.
+The build process runs TypeScript compilation and Vite bundling. A sitemap generation script is also executed before the production build.
 
-## Preview local
+Preview the generated build locally:
 
 ```bash
 npm run preview
 ```
 
-## Sitemap
+## Testing
 
-O sitemap e gerado automaticamente antes do build:
+There is currently no automated test suite configured for this repository.
 
-```bash
-npm run generate:sitemap
-```
+Current validation is based on:
 
-## Deploy na Hostinger via GitHub
+- TypeScript compilation
+- ESLint
+- production build validation
+- manual responsive checks
+- manual navigation and interaction testing
 
-- Use a opcao Node.js Web App no hPanel, quando disponivel.
-- Conecte o repositorio GitHub.
-- Garanta que o projeto esteja na raiz do repositorio.
-- Use build command `npm run build`.
-- Use output directory `dist`.
-- Se o framework nao for detectado, selecione Vite, React ou Other e preencha manualmente.
-- Para rotas internas, o arquivo `public/.htaccess` sera copiado para `dist/.htaccess`.
+Automated component or end-to-end tests are a future improvement rather than something currently implemented.
 
-Configuracao sugerida:
+## Deployment
 
-```txt
-Framework: Vite ou React
-Build command: npm run build
-Output directory: dist
-Entry file: vazio para frontend estatico, se permitido
-Node version: 20.x ou 22.x
-```
+The production site is deployed at:
 
-Este repositorio e um frontend estatico. Ele nao precisa de servidor Node persistente em producao, apenas do build gerado em `dist`.
+[https://jeanborgesdev.com](https://jeanborgesdev.com)
 
-## Deploy manual alternativo
+The application builds to a static `dist` directory.
 
-```bash
-npm install
-npm run build
-```
+Repository-specific hosting notes are documented in:
 
-Depois suba o conteudo da pasta `dist` para `public_html` na Hostinger.
+[`HOSTINGER_DEPLOY.md`](HOSTINGER_DEPLOY.md)
 
-## SEO e publicacao
+## Status
 
-- Atualizar o dominio real em `src/config/site.ts`.
-- Conferir `public/robots.txt`.
-- Conferir `public/sitemap.xml`.
-- Conferir `public/og-image.png`.
-- Enviar o sitemap no Google Search Console.
-- Solicitar a inspecao da URL principal apos a publicacao.
+**Live and actively maintained.**
 
-## Observacao
+The portfolio already includes the main navigation, project system, responsive design, SEO infrastructure, and detailed case studies.
 
-Se a Hostinger acusar `Estrutura de projeto invalida ou framework nao compativel`, confirme primeiro se o deploy foi configurado como Node.js Web App com GitHub e se o repositorio conectado contem este projeto na raiz.
+Current work is focused on improving project presentation and keeping the portfolio aligned with my most relevant development work.
+
+## Author
+
+**Jean Borges**
+
+Full Stack Developer focused on TypeScript, React, Node.js, and modern web applications.
+
+- Portfolio: [jeanborgesdev.com](https://jeanborgesdev.com)
+- GitHub: [github.com/comscijb](https://github.com/comscijb)
+- LinkedIn: [Jean Guilherme Borges](https://www.linkedin.com/in/jean-guilherme-borges-b91823272)
