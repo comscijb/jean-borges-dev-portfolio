@@ -26,6 +26,7 @@ import { projects } from "@/data/projects"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Breadcrumbs } from "@/components/common/Breadcrumbs"
+import { ConstruiqCaseStudy } from "@/components/project/ConstruiqCaseStudy"
 import { SEO } from "@/components/seo/SEO"
 import { absoluteUrl, siteConfig } from "@/config/site"
 import type { Project } from "@/types/project"
@@ -186,12 +187,16 @@ export function ProjectPage() {
   const activeImage = activeImageIndex === null ? undefined : images[activeImageIndex]
   const canBrowseImages = images.length > 1
   const projectPath = `/projetos/${project.slug}`
-  const projectDescription = caseStudy?.headline ?? project.description
+  const isConstruiq = project.id === "construiq"
+  const projectName = isConstruiq ? "ConstruiQ" : project.title
+  const projectDescription = isConstruiq
+    ? "Case técnico da ConstruiQ, marketplace B2B desenvolvido com React, TypeScript, NestJS, PostgreSQL, Stripe e AWS."
+    : caseStudy?.headline ?? project.description
   const projectUrl = absoluteUrl(projectPath)
   const breadcrumbs = [
     { label: "Início", href: "/" },
     { label: "Projetos", href: "/#projetos" },
-    { label: project.title },
+    { label: projectName },
   ]
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -206,7 +211,7 @@ export function ProjectPage() {
   const projectJsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    name: project.title,
+    name: projectName,
     url: projectUrl,
     image: absoluteUrl(project.image),
     description: projectDescription,
@@ -217,6 +222,9 @@ export function ProjectPage() {
     },
     inLanguage: siteConfig.language,
   }
+  const seoTitle = isConstruiq
+    ? "ConstruiQ | Marketplace Full Stack | Jean Borges"
+    : `${project.title} | Projeto de Jean Borges`
 
   function openLightbox(index: number) {
     setActiveImageIndex(index)
@@ -243,7 +251,7 @@ export function ProjectPage() {
   return (
     <Box minH="100vh" bg="bg.canvas">
       <SEO
-        title={`${project.title} | Projeto de Jean Borges`}
+        title={seoTitle}
         description={projectDescription}
         path={projectPath}
         image={project.image}
@@ -253,7 +261,9 @@ export function ProjectPage() {
       <Header />
 
       <Container maxW="1180px" py={{ base: "16", md: "24" }}>
-        {!caseStudy ? (
+        {isConstruiq ? (
+          <ConstruiqCaseStudy />
+        ) : !caseStudy ? (
           <FallbackProject project={project} />
         ) : (
           <Stack gap={{ base: "10", md: "14" }} animation="section-enter 0.55s ease-in both">

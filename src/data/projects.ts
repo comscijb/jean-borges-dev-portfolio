@@ -16,11 +16,11 @@ export const projects: Project[] = [
   },
   {
     id: "construiq",
-    title: "ConstruiQ Landing Page",
-    slug: "construiq-landing-page",
+    title: "ConstruiQ",
+    slug: "construiq",
     category: "Marketplace B2B",
     description:
-      "Landing page para plataforma de contratação de profissionais b2b da construção civil, com reputação verificável, contratos digitais, avaliações e mediação de disputas.",
+      "Plataforma de contratação de profissionais b2b da construção civil, com reputação verificável, contratos digitais, avaliações e mediação de disputas.",
     image: "/projects/construiq-cover.jpg",
     tags: ["React", "TypeScript", "Chakra UI", "Node.js", "PostgreSQL"],
     linkType: "internal",
