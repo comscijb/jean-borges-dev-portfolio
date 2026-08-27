@@ -50,6 +50,8 @@ export function ProjectsSection() {
               >
                 {primaryHref && (
                   <Link
+                    width="100%"
+                    display="block"
                     asChild={!isExternal}
                     href={isExternal ? primaryHref : undefined}
                     target={isExternal ? "_blank" : undefined}
@@ -62,7 +64,7 @@ export function ProjectsSection() {
                         <Image src={project.image} alt={project.title} loading="lazy" w="100%" h="100%" objectFit="cover" opacity="0.9" />
                       </Box>
                     ) : (
-                      <RouterLink to={primaryHref}>
+                      <RouterLink to={primaryHref} >
                         <Box h="210px" bg="bg.canvas" overflow="hidden">
                           <Image src={project.image} alt={project.title} loading="lazy" w="100%" h="100%" objectFit="cover" opacity="0.9" />
                         </Box>

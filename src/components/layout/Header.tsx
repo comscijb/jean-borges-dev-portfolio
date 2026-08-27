@@ -80,11 +80,11 @@ export function Header() {
             <Button
               asChild
               display={{ base: "none", lg: "inline-flex" }}
-              bg="cta.solid"
-              color="cta.contrast"
+              bg="brand.solid"
+              color="brand.contrast"
               fontWeight="700"
               transition="all 0.25s ease-in"
-              _hover={{ bg: "cta.hover", transform: "translateY(-1px)" }}
+              _hover={{ bg: "brand.hover", transform: "translateY(-1px)" }}
             >
               <a href={resumeConfig.ptBr.path} download>
                 {resumeConfig.ptBr.shortLabel}
@@ -160,7 +160,9 @@ export function Header() {
                 ))}
 
                 {resumeConfig.ptBr.enabled ? (
-                  <Button asChild mt="2" w="full" bg="cta.solid" color="cta.contrast" fontWeight="700">
+                  <Button asChild mt="2" w="full" bg="brand.solid" color="brand.contrast" fontWeight="700"
+                    transition="all 0.25s ease-in"
+                    _hover={{ opacity: 0.9, transform: "translateY(-1px)" }}>
                     <a href={resumeConfig.ptBr.path} download onClick={closeMobileMenu}>
                       {resumeConfig.ptBr.shortLabel}
                       <Icon as={FiDownload} />

@@ -4,13 +4,13 @@ export const resumeConfig = {
     label: "Currículo PT-BR",
     shortLabel: "Currículo",
     path: "/resume/Jean_Borges_Curriculo_PT-BR.pdf",
-    enabled: false,
+    enabled: true,
   },
   // TODO: add final English resume PDF to public/resume/
   en: {
     label: "Resume EN",
     shortLabel: "Resume EN",
     path: "/resume/Jean_Borges_Resume_EN.pdf",
-    enabled: false,
+    enabled: true,
   },
 } as const
