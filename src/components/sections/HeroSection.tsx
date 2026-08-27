@@ -7,17 +7,22 @@ import {
   Heading,
   HStack,
   Icon,
+  Link,
   Stack,
   Text,
   Image,
 } from "@chakra-ui/react"
 import {
   FiArrowRight,
-  FiBarChart2,
-  FiCheckCircle,
   FiCode,
-  FiMonitor,
+  FiDownload,
+  FiGithub,
+  FiLinkedin,
+  FiMapPin,
 } from "react-icons/fi"
+import { resumeConfig } from "@/config/resume"
+
+const coreStack = ["React", "TypeScript", "Node.js", "NestJS", "PostgreSQL", "AWS"]
 
 export function HeroSection() {
   return (
@@ -67,8 +72,10 @@ export function HeroSection() {
               border="1px solid"
               borderColor="brand.emphasized"
               letterSpacing="0.12em"
+              whiteSpace="normal"
+              lineHeight="1.5"
             >
-              WEBSITES PARA NEGÓCIOS LOCAIS E PME
+              FULL STACK DEVELOPER · PORTO ALEGRE, RS
             </Badge>
 
             <Stack gap="5">
@@ -80,52 +87,100 @@ export function HeroSection() {
                 color="fg"
                 letterSpacing="0"
               >
-                Seu negócio precisa de um site que gere contatos, não apenas{" "}
-                <Box as="span" color="cta.fg">
-                  uma página bonita.
+                Desenvolvo aplicações web de ponta a ponta com{" "}
+                <Box as="span" color="brand.fg">
+                  TypeScript.
                 </Box>
               </Heading>
 
-              <Text maxW="620px" fontSize={{ base: "md", md: "lg" }} color="fg.muted">
-                Crio websites simples, rápidos e estratégicos para pequenos e médios negócios que precisam transmitir confiança,
-                 explicar sua oferta com clareza e levar o visitante para uma ação: chamar no WhatsApp, pedir orçamento ou agendar atendimento.
+              <Text maxW="660px" fontSize={{ base: "md", md: "lg" }} color="fg.muted" lineHeight="1.8">
+                Estou no último semestre de Ciência da Computação e trabalho principalmente com React,
+                Node.js/NestJS e PostgreSQL. Atualmente desenvolvo a ConstruiQ, um marketplace B2B com
+                autenticação, contratos, pagamentos e infraestrutura AWS.
               </Text>
             </Stack>
+
+            <HStack gap="2" flexWrap="wrap">
+              {coreStack.map((technology) => (
+                <Badge
+                  key={technology}
+                  bg="brand.badge"
+                  color="brand.fg"
+                  border="1px solid"
+                  borderColor="border.brandSoft"
+                >
+                  {technology}
+                </Badge>
+              ))}
+            </HStack>
 
             <HStack flexWrap="wrap" gap="4">
               <Button
                 asChild
                 size="lg"
-                bg="cta.solid"
-                color="cta.contrast"
+                bg="brand.solid"
+                color="brand.contrast"
                 fontWeight="800"
                 transition="all 0.25s ease-in"
-                _hover={{ bg: "cta.hover", transform: "translateY(-1px)" }}
+                _hover={{ opacity: 0.9, transform: "translateY(-1px)" }}
               >
-                <a href="#contato">
-                  Solicitar orçamento
+                <a href="#projetos">
+                  Ver projetos
                   <Icon as={FiArrowRight} />
                 </a>
               </Button>
 
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                borderColor="brand.solid"
-                color="brand.fg"
-                transition="all 0.25s ease-in"
-                _hover={{ bg: "brand.subtle", transform: "translateY(-1px)" }}
-              >
-                <a href="#projetos">
-                  Ver exemplos de sites
-                  <Icon as={FiArrowRight} />
-                </a>
-              </Button>
+              {resumeConfig.ptBr.enabled ? (
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  borderColor="brand.solid"
+                  color="brand.fg"
+                  _hover={{ bg: "brand.subtle", transform: "translateY(-1px)" }}
+                >
+                  <a href={resumeConfig.ptBr.path} download>
+                    Baixar currículo
+                    <Icon as={FiDownload} />
+                  </a>
+                </Button>
+              ) : (
+                <Button size="lg" disabled variant="outline" borderColor="border.muted" color="fg.subtle">
+                  Currículo em breve
+                </Button>
+              )}
+
+              <HStack gap="4" px="2">
+                <Link
+                  href="https://github.com/comscijb"
+                  target="_blank"
+                  rel="noreferrer"
+                  color="fg.muted"
+                  fontWeight="800"
+                  _hover={{ color: "brand.fg", textDecoration: "none" }}
+                >
+                  <Icon as={FiGithub} mr="2" /> GitHub
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/jean-guilherme-borges-b91823272/"
+                  target="_blank"
+                  rel="noreferrer"
+                  color="fg.muted"
+                  fontWeight="800"
+                  _hover={{ color: "brand.fg", textDecoration: "none" }}
+                >
+                  <Icon as={FiLinkedin} mr="2" /> LinkedIn
+                </Link>
+              </HStack>
+            </HStack>
+
+            <HStack gap="3" color="fg.muted" fontSize="sm">
+              <Icon as={FiMapPin} color="positive.fg" />
+              <Text fontWeight="700">Buscando oportunidades Full Stack Jr. e Software Engineer de entrada.</Text>
             </HStack>
           </Stack>
 
-          <Stack position="relative" gap="5">
+          <Stack position="relative" gap="5" maxW={{ base: "560px", lg: "none" }} mx={{ base: "auto", lg: "0" }}>
             <Box
                 w="100%"
                 h={{ base: "360px", md: "390px", lg: "430px" }}
@@ -160,44 +215,6 @@ export function HeroSection() {
                 />
                 </Box>
 
-            <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap="4">
-              <Stack
-                gap="2"
-                minH="150px"
-                p="5"
-                rounded="2xl"
-                border="1px solid"
-                borderColor="border.muted"
-                bg="bg.elevated"
-              >
-                <Icon as={FiBarChart2} color="brand.fg" boxSize="7" />
-                <Text color="fg" fontWeight="700">
-                  Mais confiança
-                </Text>
-                <Text color="fg.muted" fontSize="sm">
-                  Design profissional para o cliente entender que seu negócio é sério antes mesmo de conversar com você.
-                </Text>
-              </Stack>
-
-              <Stack
-                gap="2"
-                minH="150px"
-                p="5"
-                rounded="2xl"
-                border="1px solid"
-                borderColor="brand.emphasized"
-                bg="bg.elevated"
-              >
-                <Icon as={FiMonitor} color="cta.fg" boxSize="7" />
-                <Text color="fg" fontWeight="700">
-                  Mais pedidos de orçamento
-                </Text>
-                <Text color="fg.muted" fontSize="sm">
-                  Estrutura pensada para orientar o visitante até uma ação clara, sem distração e sem excesso de informação.
-                </Text>
-              </Stack>
-            </Grid>
-
             <HStack
               gap="3"
               p="4"
@@ -206,10 +223,11 @@ export function HeroSection() {
               borderColor="border.muted"
               bg="bg.elevated"
             >
-              <Icon as={FiCheckCircle} color="brand.fg" />
-              <Text color="fg" fontSize="sm" fontWeight="700">
-                Site Responsivo + Copy Estratégica + Publicação + Integração com WhatsApp
-              </Text>
+              <Icon as={FiCode} color="brand.fg" />
+              <Stack gap="0">
+                <Text color="fg" fontSize="sm" fontWeight="800">Desenvolvimento Full Stack</Text>
+                <Text color="fg.muted" fontSize="sm">Frontend, API, banco de dados, testes e infraestrutura.</Text>
+              </Stack>
             </HStack>
 
             <Icon

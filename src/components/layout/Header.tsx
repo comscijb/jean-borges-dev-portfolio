@@ -11,13 +11,14 @@ import {
   Text,
 } from "@chakra-ui/react"
 import { useState } from "react"
-import { FiArrowUpRight, FiCode, FiMenu, FiX } from "react-icons/fi"
+import { FiCode, FiDownload, FiMenu, FiX } from "react-icons/fi"
 import { Link as RouterLink } from "react-router"
+import { resumeConfig } from "@/config/resume"
 
 const navItems = [
-  { label: "Início", href: "/#inicio" },
-  { label: "Serviços", href: "/#servicos" },
   { label: "Projetos", href: "/#projetos" },
+  { label: "Stack", href: "/#stack" },
+  { label: "Experiência", href: "/#experiencia" },
   { label: "Sobre", href: "/#sobre" },
   { label: "Contato", href: "/#contato" },
 ]
@@ -59,7 +60,7 @@ export function Header() {
           <HStack
             as="nav"
             gap="7"
-            display={{ base: "none", md: "flex" }}
+            display={{ base: "none", lg: "flex" }}
             fontSize="sm"
           >
             {navItems.map((item) => (
@@ -75,22 +76,34 @@ export function Header() {
             ))}
           </HStack>
 
-          <Button
-            asChild
-            display={{ base: "none", md: "inline-flex" }}
-            bg="cta.solid"
-            color="cta.contrast"
-            fontWeight="700"
-            transition="all 0.25s ease-in"
-            _hover={{ bg: "cta.hover", transform: "translateY(-1px)" }}
-          >
-            <a href="/#contato">
-              Solicitar orçamento
-              <Icon as={FiArrowUpRight} />
-            </a>
-          </Button>
+          {resumeConfig.ptBr.enabled ? (
+            <Button
+              asChild
+              display={{ base: "none", lg: "inline-flex" }}
+              bg="cta.solid"
+              color="cta.contrast"
+              fontWeight="700"
+              transition="all 0.25s ease-in"
+              _hover={{ bg: "cta.hover", transform: "translateY(-1px)" }}
+            >
+              <a href={resumeConfig.ptBr.path} download>
+                {resumeConfig.ptBr.shortLabel}
+                <Icon as={FiDownload} />
+              </a>
+            </Button>
+          ) : (
+            <Button
+              display={{ base: "none", lg: "inline-flex" }}
+              disabled
+              variant="outline"
+              borderColor="border.muted"
+              color="fg.subtle"
+            >
+              Currículo em breve
+            </Button>
+          )}
 
-          <Box display={{ base: "block", md: "none" }} position="relative">
+          <Box display={{ base: "block", lg: "none" }} position="relative">
             <IconButton
               aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={isMobileMenuOpen}
@@ -146,21 +159,18 @@ export function Header() {
                   </Link>
                 ))}
 
-                <Button
-                  asChild
-                  mt="2"
-                  w="full"
-                  bg="cta.solid"
-                  color="cta.contrast"
-                  fontWeight="700"
-                  transition="all 0.25s ease-in"
-                  _hover={{ bg: "cta.hover", transform: "translateY(-1px)" }}
-                >
-                  <a href="/#contato" onClick={closeMobileMenu}>
-                    Solicitar orçamento
-                    <Icon as={FiArrowUpRight} />
-                  </a>
-                </Button>
+                {resumeConfig.ptBr.enabled ? (
+                  <Button asChild mt="2" w="full" bg="cta.solid" color="cta.contrast" fontWeight="700">
+                    <a href={resumeConfig.ptBr.path} download onClick={closeMobileMenu}>
+                      {resumeConfig.ptBr.shortLabel}
+                      <Icon as={FiDownload} />
+                    </a>
+                  </Button>
+                ) : (
+                  <Button mt="2" w="full" disabled variant="outline" borderColor="border.muted" color="fg.subtle">
+                    Currículo em breve
+                  </Button>
+                )}
               </Stack>
             )}
           </Box>

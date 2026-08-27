@@ -2,28 +2,17 @@ import type { Project } from "@/types/project"
 
 export const projects: Project[] = [
   {
-    id: "caldeirao-da-bruxa",
-    title: "Caldeirão da Bruxa",
-    slug: "caldeirao-da-bruxa",
-    category: "Site completo restaurante",
-    description:
-      "Site completo para o restaurante Caldeirão da Bruxa, focado em conversão, com visual premium e cardápio incluso.",
-    image: "/projects/caldeirao-da-bruxa.jpg",
-    tags: ["React", "TypeScript", "Chakra UI"],
-    linkType: "external",
-    externalUrl: "https://caldeiraodabruxa.com",
-    featured: true,
-  },
-  {
     id: "construiq",
     title: "ConstruiQ",
     slug: "construiq",
-    category: "Marketplace B2B",
+    category: "Marketplace B2B Full Stack",
     description:
-      "Plataforma de contratação de profissionais b2b da construção civil, com reputação verificável, contratos digitais, avaliações e mediação de disputas.",
+      "Plataforma para contratação de profissionais da construção civil, com autenticação, diferentes perfis de usuário, vagas, candidaturas, contratos, pagamentos, avaliações, disputas e operação administrativa.",
     image: "/projects/construiq-cover.jpg",
-    tags: ["React", "TypeScript", "Chakra UI", "Node.js", "PostgreSQL"],
+    tags: ["React", "TypeScript", "NestJS", "PostgreSQL", "Prisma", "Stripe", "AWS"],
     linkType: "internal",
+    ctaLabel: "Ver case técnico",
+    legacySlugs: ["construiq-landing-page"],
     featured: true,
     caseStudy: {
       eyebrow: "Marketplace B2B para construção civil",
@@ -85,6 +74,35 @@ export const projects: Project[] = [
     },
   },
   {
+    id: "lead-automation-app",
+    title: "Lead Automation App",
+    slug: "lead-automation-app",
+    category: "Aplicação Full Stack",
+    description:
+      "Aplicação full stack para registrar e priorizar leads comerciais, com scoring calculado no backend, pipeline de status, dashboard e persistência em PostgreSQL.",
+    image: "/projects/lead-automation/dashboard.png",
+    tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma"],
+    linkType: "internal",
+    repositoryUrl: "https://github.com/comscijb/lead-automation-app",
+    publicCode: true,
+    ctaLabel: "Ver case",
+    featured: true,
+  },
+  {
+    id: "caldeirao-da-bruxa",
+    title: "Caldeirão da Bruxa",
+    slug: "caldeirao-da-bruxa",
+    category: "Site completo para negócio real",
+    description:
+      "Site completo desenvolvido para um negócio real, com foco em experiência do usuário, apresentação comercial, responsividade e publicação em produção.",
+    image: "/projects/caldeirao-da-bruxa.jpg",
+    tags: ["React", "TypeScript", "Chakra UI"],
+    linkType: "external",
+    externalUrl: "https://caldeiraodabruxa.com",
+    ctaLabel: "Acessar site",
+    featured: true,
+  },
+  {
     id: "clima-prime",
     title: "Clima Prime Refrigeração",
     slug: "clima-prime",
@@ -95,7 +113,7 @@ export const projects: Project[] = [
     tags: ["React", "TypeScript", "Chakra UI", "Vite", "Netlify"],
     linkType: "internal",
     externalUrl: "https://clima-prime.netlify.app/",
-    featured: true,
+    featured: false,
     caseStudy: {
       eyebrow: "Landing page para serviço local",
       headline:

@@ -35,6 +35,10 @@ export type Project = {
   tags: string[]
   linkType: ProjectLinkType
   externalUrl?: string
+  repositoryUrl?: string
+  publicCode?: boolean
+  ctaLabel?: string
+  legacySlugs?: string[]
   featured?: boolean
   caseStudy?: ProjectCaseStudy
 }

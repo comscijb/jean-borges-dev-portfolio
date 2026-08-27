@@ -1,69 +1,29 @@
-import { Box, Container, Flex, Heading, Icon, Stack, Text } from "@chakra-ui/react"
-import { FiInfo } from "react-icons/fi"
+import { Box, Container, Grid, Heading, Icon, Stack, Text } from "@chakra-ui/react"
+import { FiCompass } from "react-icons/fi"
 
 export function AboutMeSection() {
   return (
-    <Box
-      id="sobre"
-      bg="bg.sectionDeep"
-      py={{ base: "14", md: "20" }}
-      animation="section-enter 0.68s ease-in both"
-    >
+    <Box id="sobre" bg="bg.sectionDeep" py={{ base: "14", md: "20" }} animation="section-enter 0.68s ease-in both">
       <Container maxW="1180px">
-        <Flex
-          align={{ base: "start", md: "center" }}
-          gap={{ base: "6", md: "8" }}
-          direction={{ base: "column", md: "row" }}
-          p={{ base: "7", md: "10" }}
-          rounded="3xl"
-          border="1px solid"
-          borderColor="border.muted"
-          bgGradient="to-br"
-          gradientFrom="bg.card"
-          gradientTo="bg.canvas"
-          boxShadow="card"
-        >
-          <Flex
-            align="center"
-            justify="center"
-            boxSize="88px"
-            rounded="2xl"
-            bg="brand.badge"
-            border="1px solid"
-            borderColor="border.brandIcon"
-            flexShrink="0"
-          >
-            <Icon as={FiInfo} color="brand.fg" boxSize="11" />
-          </Flex>
-
+        <Grid templateColumns={{ base: "1fr", md: "0.34fr 1fr" }} gap={{ base: "6", md: "10" }} alignItems="center" p={{ base: "7", md: "10" }} rounded="3xl" border="1px solid" borderColor="border.muted" bg="bg.card" boxShadow="card">
+          <Stack align={{ base: "start", md: "center" }} gap="3">
+            <Box p="4" rounded="2xl" bg="brand.badge" border="1px solid" borderColor="border.brandIcon">
+              <Icon as={FiCompass} color="brand.fg" boxSize="9" />
+            </Box>
+            <Text color="brand.fg" fontSize="sm" fontWeight="800" letterSpacing="0.16em">SOBRE</Text>
+          </Stack>
           <Stack gap="4">
-            <Stack gap="3">
-              <Text
-                color="brand.fg"
-                fontSize="sm"
-                fontWeight="800"
-                letterSpacing="0.16em"
-                textTransform="uppercase"
-              >
-                Sobre mim
-              </Text>
-              <Heading color="fg" fontSize={{ base: "2xl", md: "4xl" }} letterSpacing="0">
-                Desenvolvimento com visão técnica e foco comercial
-              </Heading>
-            </Stack>
-
-            <Text color="fg" fontSize={{ base: "lg", md: "xl" }} fontWeight="700" maxW="850px">
-              Sou Jean Guilherme Borges, desenvolvedor web e formando em Ciência da Computação. Meu foco é criar sites e
-               aplicações simples, bem estruturadas e úteis para negócios reais. A prioridade não é apenas entregar uma
-                página bonita, mas construir uma presença digital clara, rápida e preparada para gerar contato.
+            <Heading as="h2" color="fg" fontSize={{ base: "2xl", md: "4xl" }}>
+              Gosto de entender o problema antes de escrever código.
+            </Heading>
+            <Text color="fg.muted" fontSize={{ base: "md", md: "lg" }} lineHeight="1.8">
+              Minha forma de trabalhar parte das regras e do objetivo do produto. Primeiro procuro entender o fluxo, os usuários e o que o sistema precisa garantir; depois estruturo a implementação.
             </Text>
-
-            <Text color="fg.muted" fontSize={{ base: "md", md: "lg" }} maxW="860px">
-              Trabalho com tecnologias modernas como React, TypeScript e Chakra UI, mas a escolha técnica fica nos bastidores.
-               Para o cliente, o que realmente importa é ter um site funcional, profissional e fácil de usar.
+            <Text color="fg.muted" fontSize={{ base: "md", md: "lg" }} lineHeight="1.8">
+              Antes de migrar meu foco profissional para desenvolvimento, trabalhei por anos com projetos para clientes e também em um ambiente técnico de manutenção aeronáutica. Essas experiências influenciaram a forma como organizo entregas, me comunico e lido com responsabilidade técnica.
             </Text>
           </Stack>
-        </Flex>
+        </Grid>
       </Container>
     </Box>
   )

@@ -27,6 +27,7 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Breadcrumbs } from "@/components/common/Breadcrumbs"
 import { ConstruiqCaseStudy } from "@/components/project/ConstruiqCaseStudy"
+import { LeadAutomationCaseStudy } from "@/components/project/LeadAutomationCaseStudy"
 import { SEO } from "@/components/seo/SEO"
 import { absoluteUrl, siteConfig } from "@/config/site"
 import type { Project } from "@/types/project"
@@ -156,7 +157,7 @@ function FallbackProject({ project }: FallbackProjectProps) {
 
 export function ProjectPage() {
   const { slug } = useParams()
-  const project = projects.find((item) => item.slug === slug)
+  const project = projects.find((item) => item.slug === slug || item.legacySlugs?.includes(slug ?? ""))
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
 
   if (!project) {
@@ -188,9 +189,12 @@ export function ProjectPage() {
   const canBrowseImages = images.length > 1
   const projectPath = `/projetos/${project.slug}`
   const isConstruiq = project.id === "construiq"
+  const isLeadAutomation = project.id === "lead-automation-app"
   const projectName = isConstruiq ? "ConstruiQ" : project.title
   const projectDescription = isConstruiq
     ? "Case técnico da ConstruiQ, marketplace B2B desenvolvido com React, TypeScript, NestJS, PostgreSQL, Stripe e AWS."
+    : isLeadAutomation
+      ? "Case técnico do Lead Automation App, aplicação full stack com React, Express, PostgreSQL, Prisma e scoring de leads no backend."
     : caseStudy?.headline ?? project.description
   const projectUrl = absoluteUrl(projectPath)
   const breadcrumbs = [
@@ -224,6 +228,8 @@ export function ProjectPage() {
   }
   const seoTitle = isConstruiq
     ? "ConstruiQ | Marketplace Full Stack | Jean Borges"
+    : isLeadAutomation
+      ? "Lead Automation App | Full Stack Case | Jean Borges"
     : `${project.title} | Projeto de Jean Borges`
 
   function openLightbox(index: number) {
@@ -263,6 +269,8 @@ export function ProjectPage() {
       <Container maxW="1180px" py={{ base: "16", md: "24" }}>
         {isConstruiq ? (
           <ConstruiqCaseStudy />
+        ) : isLeadAutomation ? (
+          <LeadAutomationCaseStudy />
         ) : !caseStudy ? (
           <FallbackProject project={project} />
         ) : (

@@ -16,6 +16,12 @@ export const siteConfig = {
   ],
 } as const
 
+export const homeSeo = {
+  title: "Jean Borges | Full Stack Developer | React, Node.js & TypeScript",
+  description:
+    "Desenvolvedor Full Stack em Porto Alegre, com foco em React, TypeScript, Node.js, NestJS, PostgreSQL e AWS. Ciência da Computação, conclusão em dezembro de 2026.",
+} as const
+
 export function absoluteUrl(path = "/") {
   if (/^https?:\/\//i.test(path)) return path
 
