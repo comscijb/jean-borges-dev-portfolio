@@ -1,8 +1,8 @@
 # Jean Borges Developer Portfolio
 
-Personal developer portfolio built with React and TypeScript to present selected projects, technical case studies, and my work as a Full Stack Developer.
+Personal developer portfolio built with React and TypeScript to present my work as a Full Stack Developer, selected projects, technical case studies, experience, and current technology stack.
 
-The site is designed as more than a project gallery. It gives each relevant project its own context, explaining the problem, the solution, the implementation, and the technical decisions behind the work.
+The site is structured for recruiters and engineering teams who want to quickly understand what I build, which technologies I use, and how I approach product and engineering problems.
 
 **Live site:** [jeanborgesdev.com](https://jeanborgesdev.com)
 
@@ -10,117 +10,192 @@ The site is designed as more than a project gallery. It gives each relevant proj
 
 ## Purpose
 
-A portfolio should make technical work easy to evaluate.
+This portfolio was built to make my technical work easy to evaluate.
 
-This project was built to give recruiters, engineering teams, founders, and potential clients a clear view of what I build, how I approach product problems, and which technologies I use.
+Instead of acting only as a project gallery, it brings together:
 
-The portfolio combines:
-
-- a responsive personal landing page
-- project discovery and navigation
-- dedicated project case studies
-- technical and business context
+- selected development projects
+- detailed technical case studies
+- frontend, backend, database, testing, and cloud experience
+- professional experience and education
+- project screenshots and interactive image previews
+- links to public source code when available
+- links to live projects and production deployments
 - SEO metadata and structured data
-- responsive image galleries and project screenshots
-- direct links to live work when available
+
+The current focus is Full Stack Junior and entry-level Software Engineer opportunities.
 
 ## Tech stack
 
-### Core
+### Frontend
 
 - React
 - TypeScript
+- JavaScript
 - Vite
 - Chakra UI
-- React Router
+- React Query
 
-### UI and experience
+### Backend
 
-- React Icons
-- Responsive layouts
-- Reusable design tokens
-- Accessible navigation
-- Project image lightboxes
-- CSS-based animations
+- Node.js
+- NestJS
+- Express
+- REST APIs
 
-### SEO
+### Data
 
-- React Helmet Async
-- Canonical URLs
-- Open Graph metadata
-- Twitter Card metadata
-- JSON-LD structured data
-- Sitemap generation
+- PostgreSQL
+- Prisma
 
-### Tooling
+### Testing and quality
 
+- Jest
+- Vitest
+- Testing Library
+- TypeScript
 - ESLint
-- TypeScript compiler
-- npm
 
-## Main features
+### Cloud and infrastructure
 
-### Project case studies
+- AWS
+- AWS CDK
+- Docker
+- Git
+- GitHub
 
-Projects are modeled as structured data and rendered through dedicated routes.
+### Integrations
 
-Each case can include:
+- Stripe
+- External APIs
 
-- project context
-- problem and solution
-- role and responsibilities
-- technologies
-- relevant metrics
-- key features
-- screenshots
-- external project links
+## Portfolio highlights
 
-The portfolio also supports specialized case-study experiences for projects that need a deeper technical presentation.
+### ConstruiQ
 
-### ConstruiQ case study
+**B2B full-stack marketplace for the construction industry**
 
 ConstruiQ is the main technical case in the portfolio.
 
-It presents a B2B marketplace for the construction industry and covers flows such as authentication, hiring, contracts, payments, reputation, disputes, administration, and infrastructure.
+The project covers a complete marketplace workflow, including authentication, role-based access, job postings, applications, chat, contracts, payment flows, ratings, disputes, KYC, administrative features, and AWS infrastructure.
 
-![ConstruiQ case study](public/projects/construiq-cover.jpg)
+The portfolio includes a dedicated case study focused on the system's main flows, architecture, business rules, and engineering decisions.
 
-### Clima Prime case study
+[View the ConstruiQ case study](https://jeanborgesdev.com/projetos/construiq)
 
-Clima Prime demonstrates a different type of work: a conversion-focused landing page for a local service business.
+### Lead Automation App
 
-The case emphasizes responsive frontend development, page structure, user journey, commercial clarity, and deployment.
+**Full-stack lead scoring and sales pipeline application**
 
-![Clima Prime case study](public/projects/clima-prime-cover.jpg)
+Application built with React, TypeScript, Node.js, Express, PostgreSQL, and Prisma.
+
+The project includes lead registration, backend scoring rules, pipeline status management, dashboard metrics, persistent storage, and a public GitHub repository.
+
+[View the case study](https://jeanborgesdev.com/projetos/lead-automation-app)  
+[View source code](https://github.com/comscijb/lead-automation-app)
+
+### Caldeirão da Bruxa
+
+**Production website for a real business**
+
+A complete responsive website developed for a real business, focused on user experience, commercial presentation, and production delivery.
+
+[Visit the live website](https://caldeiraodabruxa.com)
+
+### Clima Prime
+
+**Responsive conversion-focused frontend case**
+
+A fictional HVAC landing page built with React, TypeScript, Vite, and Chakra UI.
+
+The project demonstrates responsive frontend development, reusable sections, information hierarchy, CTA design, and static deployment with Netlify.
+
+[View the case study](https://jeanborgesdev.com/projetos/clima-prime)  
+[View the live demo](https://clima-prime.netlify.app/)
+
+## Main features
+
+### Recruiter-focused homepage
+
+The homepage is organized around the information most relevant to evaluating my profile:
+
+- selected projects
+- technical stack
+- professional experience
+- education
+- English proficiency
+- development approach
+- contact and professional links
+
+### Project case studies
+
+Projects are modeled as structured data and exposed through dedicated routes.
+
+The portfolio supports both reusable project pages and specialized case-study components for projects that require a deeper technical presentation.
+
+Specialized cases currently include:
+
+- ConstruiQ
+- Lead Automation App
+
+Other projects can use the shared case-study structure or link directly to an external production project.
+
+### Project screenshots and lightbox
+
+Technical cases include contextual screenshots so interfaces and workflows can be inspected alongside their explanations.
+
+Images can be opened in an enlarged view without leaving the case study.
+
+### SEO
+
+The project includes reusable SEO infrastructure for:
+
+- canonical URLs
+- Open Graph metadata
+- Twitter Card metadata
+- JSON-LD structured data
+- sitemap generation
+- page-specific metadata
 
 ## Architecture
 
 ```mermaid
 flowchart TD
     USER["Visitor"] --> ROUTER["React Router"]
-    ROUTER --> HOME["Home"]
-    ROUTER --> LINKS["Links page"]
-    ROUTER --> PROJECT["Project route"]
 
-    PROJECT --> DATA["Project data"]
-    PROJECT --> GENERIC["Generic case-study layout"]
+    ROUTER --> HOME["Portfolio homepage"]
+    ROUTER --> LINKS["Links page"]
+    ROUTER --> PROJECT["Project routes"]
+
+    HOME --> PROJECTS["Selected projects"]
+    HOME --> STACK["Tech stack"]
+    HOME --> EXPERIENCE["Experience & education"]
+    HOME --> ABOUT["About"]
+    HOME --> CONTACT["Contact"]
+
+    PROJECT --> DATA["Structured project data"]
+    PROJECT --> GENERIC["Shared case-study layout"]
     PROJECT --> CUSTOM["Specialized case studies"]
 
-    HOME --> UI["Reusable UI components"]
-    LINKS --> UI
+    CUSTOM --> CONSTRUIQ["ConstruiQ"]
+    CUSTOM --> LEADS["Lead Automation"]
+
+    PROJECTS --> UI["Reusable UI components"]
     GENERIC --> UI
     CUSTOM --> UI
 
     UI --> THEME["Chakra UI theme and design tokens"]
 
-    HOME --> SEO["SEO component"]
+    HOME --> SEO["Reusable SEO component"]
     PROJECT --> SEO
     LINKS --> SEO
 
-    SEO --> META["Canonical, Open Graph, Twitter Cards and JSON-LD"]
+    SEO --> META["Canonical, Open Graph, Twitter Cards & JSON-LD"]
 ```
 
-The application uses a shared router and reusable layout components, while project content is kept in structured data. This allows simpler projects to use the generic project page while more complex projects can have specialized case-study components without changing the overall navigation model.
+The application uses a shared routing and component system while keeping project content separated from presentation.
+
+Projects with standard presentation needs use the reusable project structure, while technically deeper projects can use dedicated case-study components without changing the overall navigation model.
 
 ## Project structure
 
@@ -139,10 +214,11 @@ The application uses a shared router and reusable layout components, while proje
 │   │   ├── common/
 │   │   ├── layout/
 │   │   ├── project/
+│   │   ├── sections/
 │   │   ├── seo/
 │   │   └── ui/
-│   ├── config/            # Site-level configuration
-│   ├── data/              # Project content
+│   ├── config/            # Site and resume configuration
+│   ├── data/              # Structured project content
 │   ├── pages/
 │   ├── theme/
 │   └── types/
@@ -154,33 +230,39 @@ The application uses a shared router and reusable layout components, while proje
 
 ### Keep project content structured
 
-Project metadata and case-study content are stored separately from the main page layout.
+Project metadata is stored separately from the main page layout.
 
-This keeps project information easier to update and avoids duplicating page structure for every case.
+This makes project information easier to maintain and allows the same data model to support project cards, routes, SEO, and case-study content.
 
-### Allow specialized cases without replacing the generic route
+### Support both reusable and specialized case studies
 
-Most projects can use a shared project presentation, while more complex cases can use their own component inside the same routing structure.
+Not every project requires the same depth of presentation.
 
-This keeps the project system flexible without forcing every case into the same format.
+The portfolio uses a shared project system for standard cases while allowing projects such as ConstruiQ and Lead Automation to have dedicated components for more complex technical explanations.
+
+### Organize the homepage around technical evaluation
+
+The current homepage prioritizes projects, stack, experience, education, and contact information rather than a service-sales funnel.
+
+This makes the site more appropriate as a developer portfolio and gives recruiters a faster path to the information needed to evaluate my profile.
 
 ### Centralize SEO behavior
 
-Site metadata is managed through a shared configuration and reusable SEO component.
+Site metadata is managed through shared configuration and a reusable SEO component.
 
 Individual pages can define their own title, description, canonical path, social image, robots behavior, and structured data without duplicating head-management logic.
 
-### Keep the deployment static
+### Keep deployment static
 
-The portfolio is built as a Vite static application. Production deployment only requires the generated `dist` output, while SPA routing is handled by the hosting configuration.
+The portfolio is built as a Vite static application.
 
-This keeps the deployment model small and appropriate for a portfolio site.
+Production deployment only requires the generated `dist` output, while SPA routing is handled by the hosting configuration.
 
 ## Routes
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Main portfolio |
+| `/` | Main developer portfolio |
 | `/links` | Direct links page |
 | `/projetos/:slug` | Dynamic project case study |
 | `*` | Not found page |
@@ -225,7 +307,7 @@ Create the production build:
 npm run build
 ```
 
-The build process runs TypeScript compilation and Vite bundling. A sitemap generation script is also executed before the production build.
+The production build runs sitemap generation, TypeScript compilation, and Vite bundling.
 
 Preview the generated build locally:
 
@@ -245,11 +327,11 @@ Current validation is based on:
 - manual responsive checks
 - manual navigation and interaction testing
 
-Automated component or end-to-end tests are a future improvement rather than something currently implemented.
+Automated component or end-to-end tests are a future improvement.
 
 ## Deployment
 
-The production site is deployed at:
+The production portfolio is available at:
 
 [https://jeanborgesdev.com](https://jeanborgesdev.com)
 
@@ -263,9 +345,7 @@ Repository-specific hosting notes are documented in:
 
 **Live and actively maintained.**
 
-The portfolio already includes the main navigation, project system, responsive design, SEO infrastructure, and detailed case studies.
-
-Current work is focused on improving project presentation and keeping the portfolio aligned with my most relevant development work.
+The current version is focused on presenting my profile for Full Stack Junior and entry-level Software Engineer opportunities, with selected projects, technical case studies, stack, experience, education, and direct professional contact information.
 
 ## Author
 

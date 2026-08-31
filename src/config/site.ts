@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Jean Borges | Desenvolvedor Full Stack",
   shortName: "Jean Borges",
-  title: "Jean Borges | Desenvolvimento Web, Landing Pages e Sistemas",
+  title: "Jean Borges | Full Stack Developer",
   description:
-    "Portfolio de Jean Borges, desenvolvedor full stack focado em landing pages comerciais, sites profissionais e sistemas sob medida para empresas.",
+    "Portfólio de Jean Borges, desenvolvedor Full Stack com foco em TypeScript, React, Node.js, NestJS, PostgreSQL e AWS.",
   url: "https://jeanborgesdev.com",
   ogImage: "https://jeanborgesdev.com/og-image.png",
   locale: "pt_BR",
